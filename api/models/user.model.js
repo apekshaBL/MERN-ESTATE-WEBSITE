@@ -16,9 +16,8 @@ const userSchema=new mongoose.Schema({
     },
     avatar:{
         type:String,
-        default:"https://th.bing.com/th/id/OIP.0CZd1ESLnyWIHdO38nyJDAAAAA?rs=1&pid=ImgDetMain"
-
-    },
+        default:"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1200.png"
+            },
 },{timestamps:true});
 
 
