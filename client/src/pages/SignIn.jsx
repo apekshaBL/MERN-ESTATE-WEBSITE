@@ -21,6 +21,7 @@ export default function SignIn(){
         }  );
 
     };
+
     const handleSubmit=async(e)=>{
       e.preventDefault();
       try{
@@ -38,7 +39,8 @@ export default function SignIn(){
       }
       
       const data =await res.json();
-      console.log(data);
+
+      //console.log(data);
       if(data.success===false){
        dispatch(signInFailure(data.message));
         return;
@@ -50,6 +52,8 @@ export default function SignIn(){
 
       }
     }
+
+
   return(
     <div className='p-3 max-w-lg mx-auto'>
       <h1 className='text-3xl text-center font-semibold my-7'>Sign In</h1>

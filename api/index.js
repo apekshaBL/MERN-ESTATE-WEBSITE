@@ -30,6 +30,7 @@ app.use("/api/listing",listingRouter);
 
 //middleware
 app.use((err,req,res,next)=>{
+    console.log(err.stack);
     const statusCode=err.statusCode || 500;
     const message =err.message || 'Internal server Error';
     return res.status(statusCode).json({
