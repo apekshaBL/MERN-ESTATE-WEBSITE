@@ -1,14 +1,14 @@
 import  { useState,useEffect } from "react";
 import {getDownloadURL, getStorage,ref,uploadBytesResumable} from 'firebase/storage';
 import {app} from '../firebase';
-import { shallowEqual } from "react-redux";
+//import { shallowEqual } from "react-redux";
 import { current } from "@reduxjs/toolkit";
 import {useSelector} from 'react-redux'
 import { useNavigate,useParams } from "react-router-dom";
 
 
 export default function CreateListing(){
-    const{currentUser}=useSelector(state=>state.user)
+    const{currentUser}=useSelector((state)=>state.user);
     const navigate=useNavigate();
     const params=useParams();
  const[files,setFiles]=useState([]);
@@ -109,7 +109,7 @@ export default function CreateListing(){
     };
 
     const handleRemoveImage=(index)=>{
-        console.log('Removing image at index:', index);
+      //  console.log('Removing image at index:', index);
         setFormData({
             ...formData,
             imageUrls:formData.imageUrls.filter((_,i)=>i!==index),
@@ -123,19 +123,25 @@ export default function CreateListing(){
             setFormData({
                 ...formData,
                 type:e.target.id
-            })
+            });
         }
-        if(e.target.id==='parking' || e.target.id==='furnished' || e.target.id==='offer'){
+        if(
+            e.target.id==='parking' ||
+             e.target.id==='furnished' ||
+              e.target.id==='offer'
+              ){
             setFormData({
                 ...formData,
-                [e.target.id]:e.target.checked
-            })
+                [e.target.id]:e.target.checked,
+            });
         }
-        if(e.target.type==='number' || e.target.type==='text' ||e.target.type==='textarea'){
+        if(e.target.type==='number' ||
+         e.target.type==='text' ||
+         e.target.type==='textarea'){
             setFormData({
                 ...formData,
                 [e.target.id]:e.target.value,
-            })
+            });
         }
     };
 
@@ -143,8 +149,10 @@ export default function CreateListing(){
    const handleSubmit=async(e)=>{
      e.preventDefault();
      try{
-        if(formData.imageUrls.length<1) return setError('You must upload at least one image')
-        if(+formData.regularPrice< +formData.discountPrice) return setError('Discount price must be lowerthan regular price')
+        if(formData.imageUrls.length<1) 
+        return setError('You must upload at least one image');
+        if(+formData.regularPrice< +formData.discountPrice)
+         return setError('Discount price must be lowerthan regular price');
         setLoading(true);
         setError(false);
         const res=await fetch(`/api/listing/update/${params.listingId}`,{
@@ -162,19 +170,20 @@ export default function CreateListing(){
         if(data.success===false){
             setError(data.message);
         }
-        if (data._id) {
+        navigate(`/listings/${data._id}`);
+        /*if (data._id) {
             navigate(`/listings/${data._id}`);
           } else {
             // Handle the case where data._id is undefined
             console.error("Cannot navigate with undefined data._id");
-          }
-          console.log(data._id);
-        navigate(`/listings/${data._id}`);
+          }*/
+         // console.log(data._id);
+       // navigate(`/listings/${data._id}`);
      }catch(error){
         setError(error.message);
         setLoading(false);
      }
-   }
+   };
 
 
 
