@@ -4,7 +4,7 @@ import { Swiper,SwiperSlide } from 'swiper/react';
 import{Navigation} from 'swiper/modules';
 import SwiperCore from 'swiper';
 import 'swiper/css/bundle';
-import listingItem from '../components/listingItem';
+import ListingItem from '../ListingItem';
 
 
 
@@ -96,7 +96,7 @@ function Home() {
               <div className='flex flex-wrap gap-4'>
                 {
                   offerListings.map((listing)=>(
-                    <listingItem listing={listing} key={listing._id}/>
+                    <ListingItem listing={listing} key={listing._id}/>
 
                   ))
                 }
@@ -118,7 +118,7 @@ function Home() {
               <div className='flex flex-wrap gap-4'>
                 {
                   rentListings.map((listing)=>(
-                    <listingItem listing={listing} key={listing._id}/>
+                    <ListingItem listing={listing} key={listing._id}/>
 
                   ))
                 }
@@ -140,7 +140,7 @@ function Home() {
               <div className='flex flex-wrap gap-4'>
                 {
                   saleListings.map((listing)=>(
-                    <listingItem listing={listing} key={listing._id}/>
+                    <ListingItem listing={listing} key={listing._id}/>
 
                   ))
                 }
