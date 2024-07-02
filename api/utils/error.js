@@ -8,4 +8,4 @@ export const errorHandler=(statusCode,message)=>{
 
 
 };
-export default errorHandler;
+export default errorHandler;    

@@ -144,9 +144,7 @@ function Home() {
 
                   ))
                 }
-
               </div>
-
             </div>
           )
         }

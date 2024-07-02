@@ -32,6 +32,7 @@
       next(error)
     }
   };
+  
   export const deleteUser=async(req,res,next)=>{
     if(req.user.id!==req.params.id)return next(errorHandler(401,'You can only delete your own account!'));
     try{

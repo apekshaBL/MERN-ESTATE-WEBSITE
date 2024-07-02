@@ -1,10 +1,11 @@
     import User from '../models/user.model.js';
-    import bcryptjs from "bcryptjs";
+    import bcryptjs from "bcryptjs"; 
     import{errorHandler} from '../utils/error.js';
     import jwt from 'jsonwebtoken';
 
+``
     export const signup=async(req,res,next)=>{
-        const {username,email,password}=req.body;
+       const {username,email,password}=req.body;
         const hashedPassword=bcryptjs.hashSync(password,10);
         const newUser=new User({username,email,password:hashedPassword});
         try{
@@ -13,7 +14,10 @@
         }catch(error){
         next(error);
         }
+        
     };
+
+
 
     export const signin= async(req,res,next)=>{
         const{email,password}=req.body;
@@ -33,6 +37,7 @@
         }
     };
 
+    
     export const google=async(req,res,next)=>{
         try{
         const user=await User.findOne({email:req.body.email});

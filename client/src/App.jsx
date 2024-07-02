@@ -22,9 +22,6 @@ function App() {
      <Route path="/about" element={<About />} />
      <Route path='/search' element={<Search/>}/>
      <Route path="/listings/:listingId" element={<Listing />} />
-
-     
-
      <Route element={<PrivateRoute/>}>
      <Route path="/profile" element={<Profile/>} />
      <Route path="/create-listing" element={<CreateListing/>}/>
@@ -35,5 +32,4 @@ function App() {
      </BrowserRouter>
   );
 }
-
 export default App

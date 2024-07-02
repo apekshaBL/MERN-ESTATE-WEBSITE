@@ -12,7 +12,6 @@ export const verifyToken=(req,res,next)=>{
         return next(errorHandler(500, 'Internal Server Error: JWT secret not defined'));
     }
 
-
     jwt.verify(token,/*process.env.JWT_SECRET*/jwtSecret,(err,user)=>{
        /* if(err) return next (errorHandler(403,'Forbidden'));  
 
